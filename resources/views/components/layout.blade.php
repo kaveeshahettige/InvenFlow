@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/7527/7527289.png" type="image/x-icon">
     <title>{{env('APP_NAME')}}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -30,16 +31,16 @@
                  {{--  --}}
                 <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                   <div class="flex shrink-0 items-center">
-                    <img class="h-8 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
+                    <img class="h-8 w-auto" src="https://cdn-icons-png.flaticon.com/512/7527/7527289.png" alt="Your Company">
                   </div>
                   <div class="hidden sm:ml-6 sm:block">
                     <div class="flex space-x-4">
-                      <a href="#" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Home</a>
+                      <a href="{{route('home')}}" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Home</a>
                     </div>
                   </div>
                 </div>
                 <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                    <a href="#" class="rounded-md bg-gray-900 px-3 py-2 mx-2 text-sm font-medium text-white" aria-current="page">Register</a>
+                    <a href="{{route('register')}}" class="rounded-md bg-gray-900 px-3 py-2 mx-2 text-sm font-medium text-white" aria-current="page">Register</a>
                     <a href="#" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Login</a>
                 </div>
               </div>
@@ -49,7 +50,7 @@
             <div class="sm:hidden" id="mobile-menu">
               <div class="space-y-1 px-2 pb-3 pt-2">
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                <a href="#" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">Home</a>
+                <a href="{{route('home')}}" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">Home</a>
               </div>
             </div>
           </nav>
