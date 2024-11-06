@@ -7,6 +7,8 @@
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/7527/7527289.png" type="image/x-icon">
     <title>{{env('APP_NAME')}}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  </head>
 </head>
 <body>
     <header>
@@ -39,10 +41,35 @@
                     </div>
                   </div>
                 </div>
+
+                @auth
+                <div class="relative ml-3" x-data="{open:false}">
+                  <div>
+                    <button x-on:click="open=!open" type="button" class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                      <span class="absolute -inset-1.5"></span>
+                      <span class="sr-only">Open user menu</span>
+                      <img class="h-8 w-8 rounded-full" src="https://picsum.photos/200" alt="">
+                    </button>
+                  </div>
+        
+                  <div x-show="open" @click.outside="open=false" class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                    <!-- Active: "bg-gray-100 outline-none", Not Active: "" -->
+                   
+                    <span class="px-4 mt-2 text-lg">{{auth()->user()->name}}</span>
+                    <form class="space-y-6" action="{{route('logout')}}" method="post">
+                      @csrf
+                    <Button class="block px-4 mb-2 text-sm text-red-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</Button>
+                    </form>
+                  </div>
+                </div>        
+                @endauth
+
+                @guest
                 <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                    <a href="{{route('register')}}" class="rounded-md bg-gray-900 px-3 py-2 mx-2 text-sm font-medium text-white" aria-current="page">Register</a>
-                    <a href="#" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Login</a>
-                </div>
+                  <a href="{{route('register')}}" class="rounded-md bg-gray-900 px-3 py-2 mx-2 text-sm font-medium text-white" aria-current="page">Register</a>
+                  <a href="{{route('login')}}" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Login</a>
+              </div>
+                @endguest
               </div>
             </div>
           
