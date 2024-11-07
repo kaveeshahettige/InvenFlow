@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/','posts.index')->name('home');
+Route::view('/','land.index')->name('home');
 
 Route::resource('items',InventoryController::class);
 

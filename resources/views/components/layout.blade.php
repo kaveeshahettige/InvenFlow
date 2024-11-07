@@ -39,7 +39,12 @@
                   </div>
                   <div class="hidden sm:ml-6 sm:block">
                     <div class="flex space-x-4">
+                      @auth
+                      <a href="{{route('inventory')}}" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Home</a>
+                      @endauth
+                      @guest
                       <a href="{{route('home')}}" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Home</a>
+                      @endguest
                     </div>
                   </div>
                 </div>

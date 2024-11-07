@@ -33,7 +33,7 @@
             <!-- Price -->
             <div class="py-4 flex justify-between items-center">
                 <dt class="text-lg font-medium text-gray-700">Price</dt>
-                <dd class="text-xl  text-green-600">${{$item->price}}</dd>
+                <dd class="text-xl text-gray-600">${{$item->price}}</dd>
             </div>
         </div>
     </div>
