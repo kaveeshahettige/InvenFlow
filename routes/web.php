@@ -17,12 +17,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/','posts.index')->name('home');
 
+Route::middleware('guest')->group(function(){
 Route::view('/register','auth.register')->name('register');
 Route::post('/register',[AuthController::class,'register']);
 
 Route::view('/login','auth.login')->name('login');
 Route::post('/login',[AuthController::class,'login']);
+    
+});
 
-Route::post('/logout',[AuthController::class,'logout'])->name('logout');
+Route::middleware('auth')->group(function(){
+    Route::get('/inventory',[InventoryController::class,'index'])->name('inventory');
+    Route::post('/logout',[AuthController::class,'logout'])->name('logout');
+});
 
-Route::get('/inventory',[InventoryController::class,'index'])->name('inventory');
+
+

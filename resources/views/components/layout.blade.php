@@ -8,6 +8,8 @@
     <title>{{env('APP_NAME')}}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
   </head>
 </head>
 <body>
@@ -56,9 +58,10 @@
                     <!-- Active: "bg-gray-100 outline-none", Not Active: "" -->
                    
                     <span class="px-4 mt-2 text-lg">{{auth()->user()->name}}</span>
-                    <form class="space-y-6" action="{{route('logout')}}" method="post">
+                    <hr/>
+                    <form class="space-y-2" action="{{route('logout')}}" method="post">
                       @csrf
-                    <Button class="block px-4 mb-2 text-sm text-red-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</Button>
+                    <Button class="block px-4 mb-5 text-lg text-red-700 font-bold" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</Button>
                     </form>
                   </div>
                 </div>        
