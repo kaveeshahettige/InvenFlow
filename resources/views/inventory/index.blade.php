@@ -6,12 +6,12 @@
                     Hello {{ auth()->user()->name }} ,
                 </h1>
                 <a href="#" class="bg-gray-800 hover:bg-indigo-900 text-white font-bold py-2 px-4 rounded">
-                    Add Inventory
+                    Add New Item
                 </a>
             </div>
             
 
-            <div class="overflow-x-auto mt-10">
+            <div class="overflow-x-auto mt-10 mb-10">
                 <table class="min-w-full bg-white border border-gray-200">
                     <thead>
                         <tr>
@@ -33,27 +33,36 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white">
-                        <tr class="hover:bg-gray-100">
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-b border-gray-200">John Doe</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-b border-gray-200">Software Engineer</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-b border-gray-200">New York</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-b border-gray-200">$120,000</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-b border-gray-200">11.11.2024</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-b border-gray-200">
-                                <div class="flex space-x-4">
-                                    <a href="#" class="text-blue-500 hover:text-blue-700 text-lg" title="Edit">
-                                        <!-- Edit Icon (Using Font Awesome) -->
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                    <a href="#" class="text-red-500 hover:text-red-700 text-lg" title="Delete">
-                                        <!-- Delete Icon (Using Font Awesome) -->
-                                        <i class="fas fa-trash-alt"></i>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                        
-                        
+                
+                        @foreach ($inventory as $item)
+                            <tr class="hover:bg-gray-100">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-b border-gray-200">
+                                    {{ $item->name }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-b border-gray-200">
+                                    {{ $item->description }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-b border-gray-200">
+                                    {{ $item->quantity }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-b border-gray-200">
+                                    ${{ number_format($item->price, 2) }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-b border-gray-200">
+                                    {{ $item->updated_at->format('d.m.Y') }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-b border-gray-200">
+                                    <div class="flex space-x-4">
+                                        <a href="" class="text-blue-500 hover:text-blue-700 text-lg" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a href="" onclick="return confirm('Are you sure?')" class="text-red-500 hover:text-red-700 text-lg" title="Delete">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

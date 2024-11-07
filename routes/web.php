@@ -17,7 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/','posts.index')->name('home');
 
+Route::resource('items',PostController::class);
+
 Route::middleware('guest')->group(function(){
+
 Route::view('/register','auth.register')->name('register');
 Route::post('/register',[AuthController::class,'register']);
 
@@ -27,7 +30,7 @@ Route::post('/login',[AuthController::class,'login']);
 });
 
 Route::middleware('auth')->group(function(){
-    Route::get('/inventory',[InventoryController::class,'index'])->name('inventory');
+    Route::get('/items',[InventoryController::class,'index'])->name('inventory');
     Route::post('/logout',[AuthController::class,'logout'])->name('logout');
 });
 
