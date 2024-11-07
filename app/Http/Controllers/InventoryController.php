@@ -8,17 +8,23 @@ use App\Models\Inventory;
 class InventoryController extends Controller
 {
     //show inventory
-    public function index() {
+    public function index(Request $request) {
+
+        $query = $request->get('search');
+        if($query){
+            $inventory = Inventory::where('name', 'like', '%' . $query . '%')->get();
+        }else{
         $inventory = Inventory::all(); // Retrieves all inventory items
-        return view('inventory.index', compact('inventory'));
     }
+    return view('inventory.index', compact('inventory'));
+}
 
     //show item
     public function show($id){
         $item=Inventory::find($id);
         return view('inventory.show',compact('item'));
     }
-    
+
     //add item
     public function create(){
         return view('inventory.create');
