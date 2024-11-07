@@ -31,7 +31,7 @@ class InventoryController extends Controller
 
 
         Inventory::create($request->all());
-        return redirect()->route('inventory');
+        return redirect()->route('inventory')->with('success', 'Item added successfully!');
 
     }
 
@@ -52,14 +52,15 @@ class InventoryController extends Controller
             
         ]);
         Inventory::where('id',$id)->update($fields);
-        return redirect()->route('inventory');
+        return redirect()->route('inventory')->with('success1', 'Item updated successfully!');
 
     }
 
     //delete item
     public function destroy($id){
         Inventory::destroy($id);
-        return redirect()->route('inventory');
+        return redirect()->route('inventory')->with('danger1', 'Item deleted successfully!');
+        
     }
 
 }
