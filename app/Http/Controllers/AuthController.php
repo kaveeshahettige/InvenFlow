@@ -44,7 +44,7 @@ class AuthController extends Controller
         //try to login the user
         if(Auth::attempt($fields,$request->remember)){
             //return redirect()->intended(); --->to the needed page
-            return redirect()->intended('inventory');
+            return redirect()->route('inventory');
         }else{
             return back()->withErrors(['failed'=>'Invalid credentials']);
         }

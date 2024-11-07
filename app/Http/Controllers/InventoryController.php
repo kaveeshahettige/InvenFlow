@@ -58,7 +58,8 @@ class InventoryController extends Controller
 
     //delete item
     public function destroy($id){
-
+        Inventory::destroy($id);
+        return redirect()->route('inventory');
     }
 
 }

@@ -56,9 +56,14 @@
                                         <a href="{{route('items.edit',$item->id)}}" class="text-blue-500 hover:text-blue-700 text-lg" title="Edit">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <a href="" onclick="return confirm('Are you sure?')" class="text-red-500 hover:text-red-700 text-lg" title="Delete">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </a>
+                                        <form action="{{route('items.destroy',$item->id)}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <Button type="submit" onclick="return confirm('Are you sure?')" class="text-red-500 hover:text-red-700 text-lg" title="Delete">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </Button>
+
+                                        </form>
                                     </div>
                                 </td>
                             </tr>
