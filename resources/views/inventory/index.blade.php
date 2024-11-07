@@ -55,6 +55,10 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-b border-gray-200">
                                     <div class="flex space-x-4">
+                                        <a href="{{ route('items.show', $item->id) }}"
+                                            class="text-gray-500 hover:text-gray-700 text-lg" title="view">
+                                            <i class="far fa-eye"></i>
+                                        </a>
                                         <a href="{{ route('items.edit', $item->id) }}"
                                             class="text-blue-500 hover:text-blue-700 text-lg" title="Edit">
                                             <i class="fas fa-edit"></i>

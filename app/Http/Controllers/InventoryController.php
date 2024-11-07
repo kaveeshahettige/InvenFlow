@@ -12,8 +12,13 @@ class InventoryController extends Controller
         $inventory = Inventory::all(); // Retrieves all inventory items
         return view('inventory.index', compact('inventory'));
     }
-    
 
+    //show item
+    public function show($id){
+        $item=Inventory::find($id);
+        return view('inventory.show',compact('item'));
+    }
+    
     //add item
     public function create(){
         return view('inventory.create');
