@@ -37,11 +37,22 @@ class InventoryController extends Controller
 
     //edit item
     public function edit($id){
-
+        $item=Inventory::find($id);
+        return view('inventory.edit',compact('item'));
     }
 
     //update item
-    public function update(StorePostRequest $request, $id){
+    public function update(Request $request,$id){
+        $item=Inventory::find($id);
+        $fields=$request->validate([
+            'name'=>['required','max:255'],
+            'description'=>['required'],
+            'quantity'=>['required','numeric','min:1'],
+            'price'=>['required','numeric','min:1'],
+            
+        ]);
+        Inventory::where('id',$id)->update($fields);
+        return redirect()->route('inventory');
 
     }
 

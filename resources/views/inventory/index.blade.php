@@ -53,7 +53,7 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-b border-gray-200">
                                     <div class="flex space-x-4">
-                                        <a href="" class="text-blue-500 hover:text-blue-700 text-lg" title="Edit">
+                                        <a href="{{route('items.edit',$item->id)}}" class="text-blue-500 hover:text-blue-700 text-lg" title="Edit">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                         <a href="" onclick="return confirm('Are you sure?')" class="text-red-500 hover:text-red-700 text-lg" title="Delete">
