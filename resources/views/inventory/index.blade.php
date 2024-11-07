@@ -5,7 +5,7 @@
                 <h1 class="font-semibold text-gray-800 text-4xl">
                     Hello {{ auth()->user()->name }} ,
                 </h1>
-                <a href="#" class="bg-gray-800 hover:bg-indigo-900 text-white font-bold py-2 px-4 rounded">
+                <a href="{{route('items.create')}}" class="bg-gray-800 hover:bg-indigo-900 text-white font-bold py-2 px-4 rounded">
                     Add New Item
                 </a>
             </div>
@@ -36,7 +36,7 @@
                 
                         @foreach ($inventory as $item)
                             <tr class="hover:bg-gray-100">
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-b border-gray-200">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-b border-gray-200 font-bold">
                                     {{ $item->name }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-b border-gray-200">

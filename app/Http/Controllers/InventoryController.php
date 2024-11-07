@@ -16,11 +16,22 @@ class InventoryController extends Controller
 
     //add item
     public function create(){
-
+        return view('inventory.create');
     }
 
     //store item
-    public function store(StorePostRequest $request){
+    public function store(Request $request){
+        $fields=$request->validate([
+            'name'=>['required','max:255','unique:inventories'],
+            'description'=>['required'],
+            'quantity'=>['required','numeric','min:1'],
+            'price'=>['required','numeric','min:1'],
+            
+        ]);
+
+
+        Inventory::create($request->all());
+        return redirect()->route('inventory');
 
     }
 

@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/','posts.index')->name('home');
 
-Route::resource('items',PostController::class);
+Route::resource('items',InventoryController::class);
 
 Route::middleware('guest')->group(function(){
 
