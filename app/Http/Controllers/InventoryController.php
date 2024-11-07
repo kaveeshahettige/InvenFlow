@@ -14,7 +14,7 @@ class InventoryController extends Controller
         if($query){
             $inventory = Inventory::where('name', 'like', '%' . $query . '%')->get();
         }else{
-        $inventory = Inventory::all(); // Retrieves all inventory items
+        $inventory = Inventory::paginate(5); // Retrieves all inventory items
     }
     return view('inventory.index', compact('inventory'));
 }
