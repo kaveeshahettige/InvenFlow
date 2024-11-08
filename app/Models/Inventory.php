@@ -15,4 +15,10 @@ class Inventory extends Model
         'quantity',
         'price',
     ];
+
+    public function category()
+{
+    return $this->belongsTo(Category::class);
+}
+
 }
