@@ -26,21 +26,36 @@
                 <table class="min-w-full bg-white border border-gray-200">
                     <thead>
                         <tr>
-                            <th
-                                class="px-6 py-3 text-left text-xs font-medium-semibold text-gray-500 uppercase tracking-wider border-b border-gray-200">
-                                Item</th>
-                            <th
-                                class="px-6 py-3 text-left text-xs font-medium-semibold text-gray-500 uppercase tracking-wider border-b border-gray-200">
-                                Description</th>
-                            <th
-                                class="px-6 py-3 text-left text-xs font-medium-semibold text-gray-500 uppercase tracking-wider border-b border-gray-200">
-                                Quantity</th>
-                            <th
-                                class="px-6 py-3 text-left text-xs font-medium-semibold text-gray-500 uppercase tracking-wider border-b border-gray-200">
-                                Price</th>
-                            <th
-                                class="px-6 py-3 text-left text-xs font-medium-semibold text-gray-500 uppercase tracking-wider border-b border-gray-200">
-                                Last updated</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">
+                                <a href="{{ route('inventory', ['sort' => 'name', 'order' => request('order') === 'asc' ? 'desc' : 'asc']) }}">
+                                    Item
+                                    @if(request('sort') === 'name')
+                                        <i class="fas fa-sort-{{ request('order') === 'asc' ? 'up' : 'down' }}"></i>
+                                    @endif
+                                </a>
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">
+                                Description
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">
+                                <a href="{{ route('inventory', ['sort' => 'quantity', 'order' => request('order') === 'asc' ? 'desc' : 'asc']) }}">
+                                    Quantity
+                                    @if(request('sort') === 'quantity')
+                                        <i class="fas fa-sort-{{ request('order') === 'asc' ? 'up' : 'down' }}"></i>
+                                    @endif
+                                </a>
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">
+                                <a href="{{ route('inventory', ['sort' => 'price', 'order' => request('order') === 'asc' ? 'desc' : 'asc']) }}">
+                                    Price
+                                    @if(request('sort') === 'price')
+                                        <i class="fas fa-sort-{{ request('order') === 'asc' ? 'up' : 'down' }}"></i>
+                                    @endif
+                                </a>
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">
+                                Last updated
+                            </th>
                         </tr>
                     </thead>
                     <tbody class="bg-white">

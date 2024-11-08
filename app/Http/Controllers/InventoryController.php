@@ -8,16 +8,32 @@ use App\Models\Inventory;
 class InventoryController extends Controller
 {
     //show inventory
-    public function index(Request $request) {
+    public function index(Request $request)
+{
+    $query = $request->get('search');
+    $sort = $request->get('sort', 'name'); // Default sort by name
+    $order = $request->get('order', 'asc'); 
 
-        $query = $request->get('search');
-        if($query){
-            $inventory = Inventory::where('name', 'like', '%' . $query . '%')->paginate();
-        }else{
-        $inventory = Inventory::paginate(5); // Retrieves all inventory items
+    $inventoryQuery = Inventory::query();
+
+
+    if ($query) {
+        $inventoryQuery->where('name', 'like', '%' . $query . '%');
     }
+
+    if (in_array($sort, ['name', 'quantity', 'price'])) {
+        $inventoryQuery->orderBy($sort, $order);
+    }
+
+    $inventory = $inventoryQuery->paginate(5)->appends([
+        'search' => $query,
+        'sort' => $sort,
+        'order' => $order,
+    ]);
+
     return view('inventory.index', compact('inventory'));
 }
+
 
     //show item
     public function show($id){

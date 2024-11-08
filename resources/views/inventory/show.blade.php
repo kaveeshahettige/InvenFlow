@@ -35,6 +35,16 @@
                 <dt class="text-lg font-medium text-gray-700">Price</dt>
                 <dd class="text-xl text-gray-600">${{$item->price}}</dd>
             </div>
+
+            <div class="py-4 flex justify-between items-center">
+                <dt class="text-lg font-medium text-gray-700">Date Added</dt>
+                <dd class="text-xl text-gray-600">{{$item->created_at }}</dd>
+            </div>
+
+            <div class="py-4 flex justify-between items-center">
+                <dt class="text-lg font-medium text-gray-700">Date Updated</dt>
+                <dd class="text-xl text-gray-600">{{$item->updated_at}}</dd>
+            </div>
         </div>
     </div>
 </x-layout>
