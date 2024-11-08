@@ -12,7 +12,7 @@ class InventoryController extends Controller
 
         $query = $request->get('search');
         if($query){
-            $inventory = Inventory::where('name', 'like', '%' . $query . '%')->get();
+            $inventory = Inventory::where('name', 'like', '%' . $query . '%')->paginate();
         }else{
         $inventory = Inventory::paginate(5); // Retrieves all inventory items
     }
