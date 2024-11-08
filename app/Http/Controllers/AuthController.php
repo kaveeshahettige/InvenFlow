@@ -27,7 +27,7 @@ class AuthController extends Controller
         Auth::login($user);
 
         //redirect
-        return redirect()->route('home');
+        return redirect()->route('inventory');
     }
 
     //login user
