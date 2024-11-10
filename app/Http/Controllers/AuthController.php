@@ -15,9 +15,7 @@ class AuthController extends Controller
         $fields=$request->validate([
             'name'=>['required','max:255'],
             'email'=>['required','email','max:255','unique:users'],
-            'password'=>['required','min:5','max:255','confirmed'],
-            
-
+            'password'=>['required','min:5','max:255','confirmed'],      
         ]);
 
         //register
@@ -37,8 +35,6 @@ class AuthController extends Controller
         $fields=$request->validate([
             'email'=>['required','email','max:255'],
             'password'=>['required','min:5','max:255'],
-            
-
         ]);
 
         //try to login the user

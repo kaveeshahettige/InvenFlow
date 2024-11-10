@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InventoryAPIController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,16 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Inventory API routes
+Route::prefix('v1')->group(function () {
+    Route::apiResource('inventories', InventoryAPIController::class);
+});
+
+
+//to call
+//GET /api/v1/inventories	//Retrieve all inventory items
+//GET	/api/v1/inventories/{id}	//Retrieve a single item by ID
+//POST	/api/v1/inventories	Create a new inventory item
+//PUT/PATCH	/api/v1/inventories/{id}	Update an item by ID
+//DELETE	/api/v1/inventories/{id}
