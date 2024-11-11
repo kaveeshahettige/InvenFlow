@@ -8,7 +8,7 @@
                 </h1>
 
                 <div class="flex space-x-4">
-                    <a href="#" class="bg-gray-800 hover:bg-indigo-900 text-white font-bold py-2 px-4 rounded">
+                    <a href="{{route('categories.create')}}" class="bg-gray-800 hover:bg-indigo-900 text-white font-bold py-2 px-4 rounded">
                         Add New Category
                     </a>
                     <!-- Search Form -->

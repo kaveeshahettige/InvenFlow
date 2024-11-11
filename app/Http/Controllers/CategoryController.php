@@ -33,26 +33,23 @@ class CategoryController extends Controller
         return view('category.show',compact('category'));
     }
 
-    // //add item
-    // public function create(){
-    //     return view('inventory.create');
-    // }
+    //add item
+    public function create(){
+        return view('category.create');
+    }
 
-    // //store item
-    // public function store(Request $request){
-    //     $fields=$request->validate([
-    //         'name'=>['required','max:255','unique:inventories'],
-    //         'description'=>['required'],
-    //         'quantity'=>['required','numeric','min:1'],
-    //         'price'=>['required','numeric','min:1'],
-            
-    //     ]);
+    //store item
+    public function store(Request $request){
+        $fields=$request->validate([
+            'name'=>['required','max:255','unique:categories'],
+            'description'=>['required'],          
+        ]);
 
 
-    //     Inventory::create($request->all());
-    //     return redirect()->route('inventory')->with('success', 'Item added successfully!');
+        Category::create($request->all());
+        return redirect()->route('categories')->with('success', 'Category added successfully!');
 
-    // }
+    }
 
     // //edit item
     // public function edit($id){
