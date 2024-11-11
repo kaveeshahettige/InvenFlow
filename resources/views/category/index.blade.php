@@ -13,7 +13,7 @@
                         Add New Category
                     </a>
                     <!-- Search Form -->
-                    <form action="" method="GET" class="flex items-center space-x-2">
+                    <form action="{{route('categories')}}" method="GET" class="flex items-center space-x-2">
                         <input type="text" name="search" placeholder="Search by category name..."
                             class="px-4 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-indigo-500"
                             value="">
@@ -175,7 +175,7 @@
                     </tbody>
                 </table>
                 <div class="mt-5">
-                    {{-- {{ $inventory->links() }} --}}
+                     {{  $categories->links() }}
                 </div>
             </div>
         </div>

@@ -10,28 +10,21 @@ class CategoryController extends Controller
     //show categories
     public function index(Request $request)
 {
-    // $query = $request->get('search');
-    // $sort = $request->get('sort', 'name'); // Default sort by name
-    // $order = $request->get('order', 'asc'); 
-
-    // $inventoryQuery = Inventory::query();
+     $query = $request->get('search');
+    
+    $categoryQuery = Category::withCount('inventories');
 
 
-    // if ($query) {
-    //     $inventoryQuery->where('name', 'like', '%' . $query . '%');
-    // }
+    if ($query) {
+        $categoryQuery->where('name', 'like', '%' . $query . '%');
+    }
 
-    // if (in_array($sort, ['name', 'quantity', 'price'])) {
-    //     $inventoryQuery->orderBy($sort, $order);
-    // }
 
-    // $inventory = $inventoryQuery->paginate(5)->appends([
-    //     'search' => $query,
-    //     'sort' => $sort,
-    //     'order' => $order,
-    // ]);
+    $categories = $categoryQuery->paginate(5)->appends([
+        'search' => $query,
+    ]);
 
-    $categories = Category::withCount('inventories')->get();
+   // $categories = Category::withCount('inventories')->get();
 
     return view('category.index', compact('categories'));
 }
