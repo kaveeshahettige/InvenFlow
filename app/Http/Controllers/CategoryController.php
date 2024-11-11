@@ -10,7 +10,7 @@ class CategoryController extends Controller
     //show categories
     public function index(Request $request)
 {
-     $query = $request->get('search');
+    $query = $request->get('search');
     
     $categoryQuery = Category::withCount('inventories');
 
@@ -19,22 +19,19 @@ class CategoryController extends Controller
         $categoryQuery->where('name', 'like', '%' . $query . '%');
     }
 
-
     $categories = $categoryQuery->paginate(5)->appends([
         'search' => $query,
     ]);
-
-   // $categories = Category::withCount('inventories')->get();
 
     return view('category.index', compact('categories'));
 }
 
 
-    // //show item
-    // public function show($id){
-    //     $item=Inventory::find($id);
-    //     return view('inventory.show',compact('item'));
-    // }
+    //show item
+    public function show($id){
+        $category=Category::find($id);
+        return view('category.show',compact('category'));
+    }
 
     // //add item
     // public function create(){

@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::view('/','land.index')->name('home');
 
 Route::resource('items',InventoryController::class);
-//Route::resource('items',CatgoryController::class);
+Route::resource('categories',CategoryController::class);
 
 Route::middleware('guest')->group(function(){
 

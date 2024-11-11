@@ -8,7 +8,7 @@
                 </h1>
                 
                 <div class="flex space-x-4">
-                    <a href="{{ route('items.create') }}"
+                    <a href="#"
                         class="bg-gray-800 hover:bg-indigo-900 text-white font-bold py-2 px-4 rounded">
                         Add New Category
                     </a>
@@ -69,7 +69,7 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-b border-gray-200">
                                     <div class="flex space-x-4">
-                                        <a href=""
+                                        <a href="{{ route('categories.show', $category->id) }}"
                                             class="text-gray-500 hover:text-gray-700 text-lg" title="view">
                                             <i class="far fa-eye"></i>
                                         </a>
