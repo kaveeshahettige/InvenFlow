@@ -75,11 +75,11 @@ class CategoryController extends Controller
 
     // }
 
-    // //delete item
-    // public function destroy($id){
-    //     Inventory::destroy($id);
-    //     return redirect()->route('inventory')->with('danger1', 'Item deleted successfully!');
+    //delete item
+    public function destroy($id){
+        Category::destroy($id);
+        return redirect()->route('categories')->with('danger1', 'Category deleted successfully!');
         
-    // }
+    }
 
 }

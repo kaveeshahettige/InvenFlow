@@ -6,14 +6,13 @@
                 <h1 class="font-semibold text-gray-800 text-4xl">
                     Categories,
                 </h1>
-                
+
                 <div class="flex space-x-4">
-                    <a href="#"
-                        class="bg-gray-800 hover:bg-indigo-900 text-white font-bold py-2 px-4 rounded">
+                    <a href="#" class="bg-gray-800 hover:bg-indigo-900 text-white font-bold py-2 px-4 rounded">
                         Add New Category
                     </a>
                     <!-- Search Form -->
-                    <form action="{{route('categories')}}" method="GET" class="flex items-center space-x-2">
+                    <form action="{{ route('categories') }}" method="GET" class="flex items-center space-x-2">
                         <input type="text" name="search" placeholder="Search by category name..."
                             class="px-4 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-indigo-500"
                             value="">
@@ -27,26 +26,30 @@
                 <table class="min-w-full bg-white border border-gray-200">
                     <thead>
                         <tr>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">
+                            <th
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">
                                 <a href="">
                                     Category
-                                    {{-- @if(request('sort') === 'name')
+                                    {{-- @if (request('sort') === 'name')
                                         <i class="fas fa-sort-{{ request('order') === 'asc' ? 'up' : 'down' }}"></i>
                                     @endif --}}
                                 </a>
                             </th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">
+                            <th
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">
                                 Description
                             </th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">
+                            <th
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">
                                 <a href="">
                                     Number of items
-                                    {{-- @if(request('sort') === 'quantity')
+                                    {{-- @if (request('sort') === 'quantity')
                                         <i class="fas fa-sort-{{ request('order') === 'asc' ? 'up' : 'down' }}"></i>
                                     @endif --}}
                                 </a>
                             </th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">
+                            <th
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">
                                 Last updated
                             </th>
                         </tr>
@@ -62,7 +65,7 @@
                                     {{ $category->description }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-b border-gray-200">
-                                    {{ $category->inventories_count  }}
+                                    {{ $category->inventories_count }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-b border-gray-200">
                                     {{ $category->updated_at->format('d.m.Y') }}
@@ -73,10 +76,10 @@
                                             class="text-gray-500 hover:text-gray-700 text-lg" title="view">
                                             <i class="far fa-eye"></i>
                                         </a>
-                                        <a href=""
-                                            class="text-blue-500 hover:text-blue-700 text-lg" title="Edit">
+                                        {{-- <a href="" class="text-blue-500 hover:text-blue-700 text-lg"
+                                            title="Edit">
                                             <i class="fas fa-edit"></i>
-                                        </a>
+                                        </a> --}}
                                         <!-- delete icon with modal -->
                                         <div x-data="{ showModal: false }">
                                             <button @click="showModal = true"
@@ -92,8 +95,7 @@
                                                     <div class="mt-4 flex justify-end space-x-4">
                                                         <button @click="showModal = false"
                                                             class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300">Cancel</button>
-                                                        <form action=""
-                                                            method="POST">
+                                                        <form action="{{route('categories.destroy',$category->id)}}" method="POST">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit"
@@ -175,7 +177,7 @@
                     </tbody>
                 </table>
                 <div class="mt-5">
-                     {{  $categories->links() }}
+                    {{ $categories->links() }}
                 </div>
             </div>
         </div>
