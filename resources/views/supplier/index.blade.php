@@ -4,18 +4,18 @@
             <!-- Add a search bar above the inventory table -->
             <div class="flex justify-between items-center mt-5 max-w-7xl mx-auto">
                 <h1 class="font-semibold text-gray-800 text-4xl">
-                    Categories,
+                    Suppliers,
                 </h1>
-
                 <div class="flex space-x-4">
-                    <a href="{{route('categories.create')}}" class="bg-gray-800 hover:bg-indigo-900 text-white font-bold py-2 px-4 rounded">
-                        Add New Category
+                    <a href=""
+                        class="bg-gray-800 hover:bg-indigo-900 text-white font-bold py-2 px-4 rounded">
+                        Add New Supplier
                     </a>
                     <!-- Search Form -->
-                    <form action="{{ route('categories.index') }}" method="GET" class="flex items-center space-x-2">
-                        <input type="text" name="search" placeholder="Search by category name..."
+                    <form action="{{route('suppliers.index')}}" method="GET" class="flex items-center space-x-2">
+                        <input type="text" name="search" placeholder="Search by item name..."
                             class="px-4 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-indigo-500"
-                            value="">
+                            value="{{ request()->get('search') }}">
                         <button type="submit"
                             class="px-4 py-2 bg-gray-800 text-white rounded-md hover:bg-indigo-900">Search</button>
                     </form>
@@ -26,60 +26,54 @@
                 <table class="min-w-full bg-white border border-gray-200">
                     <thead>
                         <tr>
-                            <th
-                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">
-                                <a href="">
-                                    Category
-                                    {{-- @if (request('sort') === 'name')
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">
+                                {{-- <a href="{{ route('inventory', ['sort' => 'name', 'order' => request('order') === 'asc' ? 'desc' : 'asc']) }}"> --}}
+                                    Supplier
+                                    {{-- @if(request('sort') === 'name')
                                         <i class="fas fa-sort-{{ request('order') === 'asc' ? 'up' : 'down' }}"></i>
                                     @endif --}}
                                 </a>
                             </th>
-                            <th
-                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">
-                                Description
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">
+                                Contact 
                             </th>
-                            <th
-                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">
-                                <a href="">
-                                    Number of items
-                                    {{-- @if (request('sort') === 'quantity')
-                                        <i class="fas fa-sort-{{ request('order') === 'asc' ? 'up' : 'down' }}"></i>
-                                    @endif --}}
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">
+                                {{-- <a href="{{ route('inventory', ['sort' => 'price', 'order' => request('order') === 'asc' ? 'desc' : 'asc']) }}"> --}}
+                                    Number of item types supplied
+                                    
                                 </a>
                             </th>
-                            <th
-                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">
                                 Last updated
                             </th>
                         </tr>
                     </thead>
                     <tbody class="bg-white">
-                        @foreach ($categories as $category)
+                        @foreach ($suppliers as $supplier)
                             <tr class="hover:bg-gray-100">
                                 <td
                                     class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-b border-gray-200 font-bold">
-                                    {{ $category->name }}
+                                    {{ $supplier->name }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-b border-gray-200">
-                                    {{ $category->description }}
+                                    {{ $supplier->contact_info }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-b border-gray-200">
-                                    {{ $category->inventories_count }}
+                                    {{ $supplier->inventories_count }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-b border-gray-200">
-                                    {{ $category->updated_at->format('d.m.Y') }}
+                                    {{ $supplier->updated_at}}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-b border-gray-200">
                                     <div class="flex space-x-4">
-                                        <a href="{{ route('categories.show', $category->id) }}"
+                                        <a href=""
                                             class="text-gray-500 hover:text-gray-700 text-lg" title="view">
                                             <i class="far fa-eye"></i>
                                         </a>
-                                        {{-- <a href="" class="text-blue-500 hover:text-blue-700 text-lg"
-                                            title="Edit">
+                                        <a href=""
+                                            class="text-blue-500 hover:text-blue-700 text-lg" title="Edit">
                                             <i class="fas fa-edit"></i>
-                                        </a> --}}
+                                        </a>
                                         <!-- delete icon with modal -->
                                         <div x-data="{ showModal: false }">
                                             <button @click="showModal = true"
@@ -95,7 +89,8 @@
                                                     <div class="mt-4 flex justify-end space-x-4">
                                                         <button @click="showModal = false"
                                                             class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300">Cancel</button>
-                                                        <form action="{{route('categories.destroy',$category->id)}}" method="POST">
+                                                        <form action=""
+                                                            method="POST">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit"
@@ -109,6 +104,26 @@
                                 </td>
                             </tr>
                         @endforeach
+
+                        {{-- messge to say that item updated --}}
+                        @if (session('success1'))
+                            <div id="success-message"
+                                class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative"
+                                role="alert">
+                                <span class="block sm:inline">{{ session('success1') }}</span>
+                            </div>
+                            <script>
+                                // Set a timeout to remove the success message after 3 seconds
+                                setTimeout(() => {
+                                    const successMessage = document.getElementById('success-message');
+                                    if (successMessage) {
+                                        successMessage.style.transition = 'opacity 0.5s ease';
+                                        successMessage.style.opacity = '0';
+                                        setTimeout(() => successMessage.remove(), 500); // Fully remove after fading out
+                                    }
+                                }, 3000); // Display for 3 seconds
+                            </script>
+                        @endif
 
                         {{-- messge to say that item added --}}
                         @if (session('success'))
@@ -157,7 +172,7 @@
                     </tbody>
                 </table>
                 <div class="mt-5">
-                    {{ $categories->links() }}
+                    {{ $suppliers->links() }}
                 </div>
             </div>
         </div>

@@ -27,18 +27,20 @@ class CategoryController extends Controller
 }
 
 
-    //show item
+    //show category
     public function show($id){
-        $category=Category::find($id);
+        //need category with count in inventory table for the id
+        $category=Category::withCount('inventories')->find($id);
+
         return view('category.show',compact('category'));
     }
 
-    //add item
+    //add category
     public function create(){
         return view('category.create');
     }
 
-    //store item
+    //store category
     public function store(Request $request){
         $fields=$request->validate([
             'name'=>['required','max:255','unique:categories'],
@@ -47,35 +49,14 @@ class CategoryController extends Controller
 
 
         Category::create($request->all());
-        return redirect()->route('categories')->with('success', 'Category added successfully!');
+        return redirect()->route('categories.index')->with('success', 'Category added successfully!');
 
     }
 
-    // //edit item
-    // public function edit($id){
-    //     $item=Inventory::find($id);
-    //     return view('inventory.edit',compact('item'));
-    // }
-
-    // //update item
-    // public function update(Request $request,$id){
-    //     $item=Inventory::find($id);
-    //     $fields=$request->validate([
-    //         'name'=>['required','max:255'],
-    //         'description'=>['required'],
-    //         'quantity'=>['required','numeric','min:1'],
-    //         'price'=>['required','numeric','min:1'],
-            
-    //     ]);
-    //     Inventory::where('id',$id)->update($fields);
-    //     return redirect()->route('inventory')->with('success1', 'Item updated successfully!');
-
-    // }
-
-    //delete item
+    //delete category
     public function destroy($id){
         Category::destroy($id);
-        return redirect()->route('categories')->with('danger1', 'Category deleted successfully!');
+        return redirect()->route('categories.index')->with('danger1', 'Category deleted successfully!');
         
     }
 

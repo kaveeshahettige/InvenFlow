@@ -12,7 +12,7 @@
                         Add New Item
                     </a>
                     <!-- Search Form -->
-                    <form action="{{ route('inventory') }}" method="GET" class="flex items-center space-x-2">
+                    <form action="{{ route('items.index') }}" method="GET" class="flex items-center space-x-2">
                         <input type="text" name="search" placeholder="Search by item name..."
                             class="px-4 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-indigo-500"
                             value="{{ request()->get('search') }}">
@@ -27,7 +27,7 @@
                     <thead>
                         <tr>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">
-                                <a href="{{ route('inventory', ['sort' => 'name', 'order' => request('order') === 'asc' ? 'desc' : 'asc']) }}">
+                                <a href="{{ route('items.index', ['sort' => 'name', 'order' => request('order') === 'asc' ? 'desc' : 'asc']) }}">
                                     Item
                                     @if(request('sort') === 'name')
                                         <i class="fas fa-sort-{{ request('order') === 'asc' ? 'up' : 'down' }}"></i>
@@ -38,7 +38,7 @@
                                 Description
                             </th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">
-                                <a href="{{ route('inventory', ['sort' => 'quantity', 'order' => request('order') === 'asc' ? 'desc' : 'asc']) }}">
+                                <a href="{{ route('items.index', ['sort' => 'quantity', 'order' => request('order') === 'asc' ? 'desc' : 'asc']) }}">
                                     Quantity
                                     @if(request('sort') === 'quantity')
                                         <i class="fas fa-sort-{{ request('order') === 'asc' ? 'up' : 'down' }}"></i>
@@ -46,7 +46,7 @@
                                 </a>
                             </th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">
-                                <a href="{{ route('inventory', ['sort' => 'price', 'order' => request('order') === 'asc' ? 'desc' : 'asc']) }}">
+                                <a href="{{ route('items.index', ['sort' => 'price', 'order' => request('order') === 'asc' ? 'desc' : 'asc']) }}">
                                     Price
                                     @if(request('sort') === 'price')
                                         <i class="fas fa-sort-{{ request('order') === 'asc' ? 'up' : 'down' }}"></i>

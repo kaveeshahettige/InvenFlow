@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SupplierController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +21,7 @@ Route::view('/','land.index')->name('home');
 
 Route::resource('items',InventoryController::class);
 Route::resource('categories',CategoryController::class);
+Route::resource('suppliers',SupplierController::class);
 
 Route::middleware('guest')->group(function(){
 
@@ -32,9 +34,7 @@ Route::post('/login',[AuthController::class,'login']);
 });
 
 Route::middleware('auth')->group(function(){
-    Route::get('/items',[InventoryController::class,'index'])->name('inventory');
     Route::post('/logout',[AuthController::class,'logout'])->name('logout');
-    Route::get('/categories',[CategoryController::class,'index'])->name('categories');
 });
 
 

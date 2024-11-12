@@ -10,8 +10,9 @@ class Supplier extends Model
     use HasFactory;
 
     public function inventories()
-{
-    return $this->belongsToMany(Inventory::class, 'inventory_supplier');
-}
+    {
+        return $this->hasMany(Inventory::class);
+    }
+    
 
 }

@@ -25,7 +25,7 @@ class AuthController extends Controller
         Auth::login($user);
 
         //redirect
-        return redirect()->route('inventory');
+        return redirect()->route('items.index');
     }
 
     //login user
@@ -40,7 +40,7 @@ class AuthController extends Controller
         //try to login the user
         if(Auth::attempt($fields,$request->remember)){
             //return redirect()->intended(); --->to the needed page
-            return redirect()->route('inventory');
+            return redirect()->route('items.index');
         }else{
             return back()->withErrors(['failed'=>'Invalid credentials']);
         }

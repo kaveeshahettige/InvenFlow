@@ -24,6 +24,11 @@
                 <dd class="text-lg text-gray-600">{{$category->description}}</dd>
             </div>
 
+            <div >
+                <dt class="text-xl py-1 font-medium text-gray-700">Items available</dt>
+                <dd class="text-lg text-gray-600">{{$category->inventories_count}}</dd>
+            </div>
+
             <div>
                 <dt class="text-xl py-1 font-medium text-gray-700">Date Added</dt>
                 <dd class="text-lg text-gray-600">{{$category->created_at->format('d.m.Y') }}</dd>

@@ -21,9 +21,15 @@ class Inventory extends Model
     return $this->belongsTo(Category::class);
 }
 
+// public function suppliers()
+// {
+//     return $this->belongsToMany(Supplier::class, 'inventory_supplier');
+// }
+
 public function suppliers()
 {
-    return $this->belongsToMany(Supplier::class, 'inventory_supplier');
+    return $this->belongsToMany(Supplier::class, 'inventories', 'id','supplier_id');
+
 }
 
 }
