@@ -38,6 +38,12 @@
                                 Description
                             </th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">
+                                Category
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">
+                                Supplier
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">
                                 <a href="{{ route('items.index', ['sort' => 'quantity', 'order' => request('order') === 'asc' ? 'desc' : 'asc']) }}">
                                     Quantity
                                     @if(request('sort') === 'quantity')
@@ -53,9 +59,6 @@
                                     @endif
                                 </a>
                             </th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">
-                                Last updated
-                            </th>
                         </tr>
                     </thead>
                     <tbody class="bg-white">
@@ -69,13 +72,16 @@
                                     {{ $item->description }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-b border-gray-200">
+                                    {{ $item->category->name }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-b border-gray-200">
+                                    {{ $item->supplier->name }}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-b border-gray-200">
                                     {{ $item->quantity }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-b border-gray-200">
                                     ${{ number_format($item->price, 2) }}
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-b border-gray-200">
-                                    {{ $item->updated_at->format('d.m.Y') }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-b border-gray-200">
                                     <div class="flex space-x-4">

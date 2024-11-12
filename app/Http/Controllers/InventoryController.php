@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Inventory;
+use App\Models\Category;
+use App\Models\Supplier;
 
 class InventoryController extends Controller
 {
@@ -14,7 +16,8 @@ class InventoryController extends Controller
     $sort = $request->get('sort', 'name'); // Default sort by name
     $order = $request->get('order', 'asc'); 
 
-    $inventoryQuery = Inventory::query();
+    //taking related data from category and supplier tables
+    $inventoryQuery = Inventory::query()->with('category', 'supplier');
 
 
     if ($query) {
@@ -37,13 +40,20 @@ class InventoryController extends Controller
 
     //show item
     public function show($id){
-        $item=Inventory::find($id);
+        $item=Inventory::with('category', 'supplier')->find($id);;
         return view('inventory.show',compact('item'));
     }
 
     //add item
     public function create(){
-        return view('inventory.create');
+
+        $data = [
+            'categories' => Category::all(), // Fetch all categories
+            'suppliers' => Supplier::all(),   // Fetch all suppliers
+        ];
+        
+        return view('inventory.create', compact('data'));
+        
     }
 
     //store item
@@ -53,9 +63,9 @@ class InventoryController extends Controller
             'description'=>['required'],
             'quantity'=>['required','numeric','min:1'],
             'price'=>['required','numeric','min:1'],
-            
+            'category_id'=>['required'],
+            'supplier_id'=>['required'],     
         ]);
-
 
         Inventory::create($request->all());
         return redirect()->route('items.index')->with('success', 'Item added successfully!');
@@ -64,8 +74,13 @@ class InventoryController extends Controller
 
     //edit item
     public function edit($id){
-        $item=Inventory::find($id);
-        return view('inventory.edit',compact('item'));
+        $data = [
+            'categories' => Category::all(), // Fetch all categories
+            'suppliers' => Supplier::all(),   // Fetch all suppliers
+            'item'=>Inventory::with('category', 'supplier')->find($id),
+        ];
+
+        return view('inventory.edit',compact('data'));
     }
 
     //update item
@@ -76,6 +91,8 @@ class InventoryController extends Controller
             'description'=>['required'],
             'quantity'=>['required','numeric','min:1'],
             'price'=>['required','numeric','min:1'],
+            'category_id'=>['required'],
+            'supplier_id'=>['required'],
             
         ]);
         Inventory::where('id',$id)->update($fields);

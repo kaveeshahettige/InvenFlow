@@ -14,6 +14,8 @@ class Inventory extends Model
         'description',
         'quantity',
         'price',
+        'category_id',
+        'supplier_id',
     ];
 
     public function category()
@@ -26,10 +28,14 @@ class Inventory extends Model
 //     return $this->belongsToMany(Supplier::class, 'inventory_supplier');
 // }
 
-public function suppliers()
-{
-    return $this->belongsToMany(Supplier::class, 'inventories', 'id','supplier_id');
+// public function suppliers()
+// {
+//     return $this->belongsToMany(Supplier::class, 'inventories', 'id','supplier_id');
 
+// }
+public function supplier()
+{
+    return $this->belongsTo(Supplier::class);
 }
 
 }
