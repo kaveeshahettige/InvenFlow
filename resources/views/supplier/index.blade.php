@@ -7,7 +7,7 @@
                     Suppliers,
                 </h1>
                 <div class="flex space-x-4">
-                    <a href=""
+                    <a href="{{route('suppliers.create')}}"
                         class="bg-gray-800 hover:bg-indigo-900 text-white font-bold py-2 px-4 rounded">
                         Add New Supplier
                     </a>

@@ -27,4 +27,20 @@ class SupplierController extends Controller
     return view('supplier.index', compact('suppliers'));
 }
 
+    //create supplier
+    public function create(){
+        return view('supplier.create');
+    }
+
+    //store supplier
+    public function store(Request $request){
+        $fields=$request->validate([
+            'name'=>['required','max:255','unique:suppliers'],
+            'contact_info'=>['required'],
+        ]);
+
+        Supplier::create($request->all());
+        return redirect()->route('suppliers.index')->with('success', 'Supplier added successfully!');
+    }
+
 }
