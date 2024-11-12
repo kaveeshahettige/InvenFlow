@@ -1,9 +1,10 @@
 # InvenFlow
-A simple, intuitive web application built with Laravel 11 for managing and organizing inventory items efficiently.This application streamlines inventory tracking, making it easy to manage item details like quantities, prices, and updates.
+A simple, intuitive web application built with Laravel 11 for managing and organizing inventory items efficiently.This application streamlines inventory tracking, making it easy to manage item details like quantities, prices, suppliers and categories.
 
 ## Features
 
-- **Inventory Management**: Add, view, edit, and delete inventory items with fields like name, description, quantity,price and updates.
+- **Inventory Management**: Add, view, edit, and delete inventory items with fields like name, description, quantity, price, supplier and category.
+- **Item Supplier & Category Management**: Add, view, edit, and delete suppliers and categories with fields like name, contact information,  and related items.
 - **Sorting and Searching**: Sort and search through inventory items based on name, quantity, or price.
 - **Pagination**: View inventory items with pagination for a better user experience.
 
@@ -52,7 +53,7 @@ Before you begin, make sure you have the following installed:
 6. **php artisan migrate**
     php artisan migrate
 
-7. **seed the database or add data manually**    
+7. **seed the database or use the provided database**    
 
 7. **Compile front-end assets**
     npm run dev
