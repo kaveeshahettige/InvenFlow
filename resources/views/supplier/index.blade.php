@@ -70,7 +70,7 @@
                                             class="text-gray-500 hover:text-gray-700 text-lg" title="view">
                                             <i class="far fa-eye"></i>
                                         </a>
-                                        <a href=""
+                                        <a href="{{route('suppliers.edit', $supplier->id)}}"
                                             class="text-blue-500 hover:text-blue-700 text-lg" title="Edit">
                                             <i class="fas fa-edit"></i>
                                         </a>
@@ -105,27 +105,7 @@
                             </tr>
                         @endforeach
 
-                        {{-- messge to say that item updated --}}
-                        @if (session('success1'))
-                            <div id="success-message"
-                                class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative"
-                                role="alert">
-                                <span class="block sm:inline">{{ session('success1') }}</span>
-                            </div>
-                            <script>
-                                // Set a timeout to remove the success message after 3 seconds
-                                setTimeout(() => {
-                                    const successMessage = document.getElementById('success-message');
-                                    if (successMessage) {
-                                        successMessage.style.transition = 'opacity 0.5s ease';
-                                        successMessage.style.opacity = '0';
-                                        setTimeout(() => successMessage.remove(), 500); // Fully remove after fading out
-                                    }
-                                }, 3000); // Display for 3 seconds
-                            </script>
-                        @endif
-
-                        {{-- messge to say that item added --}}
+                        {{-- messge to say that item added/updated --}}
                         @if (session('success'))
                             <div id="success-message"
                                 class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative"

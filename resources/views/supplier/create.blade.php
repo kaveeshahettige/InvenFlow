@@ -23,15 +23,18 @@
                     </div>
 
                     <div class="col-span-full">
-                        <label for="description" class="block text-sm/6 font-medium text-gray-900">Contact Information</label>
+                        <label for="contact_info" class="block text-sm/6 font-medium text-gray-900">Contact Information</label>
                         <div class="mt-2">
-                            <textarea id="contact_info" name="contact_info" rows="3"
-                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"></textarea>
+                            <div
+                            class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                            <input type="text" name="contact_info" id="contact_info" class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm/6">
+                            
+                        </div>
                                 @error('contact_info')
                   <p class="text-red-500 text-xs mt-1">{{$message}}</p>    
               @enderror
                         </div>
-                        <p class="mt-3 text-sm/6 text-gray-600">Write a few sentences about supplier.</p>
+                        <p class="mt-3 text-sm/6 text-gray-600">Add email/contact number.</p>
                     </div>
 
                 </div>

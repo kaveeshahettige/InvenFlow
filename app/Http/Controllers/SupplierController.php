@@ -51,4 +51,23 @@ class SupplierController extends Controller
         return view('supplier.show',compact('supplier'));
     }
 
+    //edit supplier
+    public function edit($id){
+        $supplier=Supplier::find($id);
+        return view('supplier.edit',compact('supplier'));
+    }
+
+    //update supplier
+    public function update(Request $request,$id){
+
+        $fields=$request->validate([
+            'name'=>['required','max:255','unique:suppliers'],
+            'contact_info'=>['required'],
+        ]);
+
+        $supplier=Supplier::find($id);
+        $supplier->update($request->all());
+        return redirect()->route('suppliers.index')->with('success', 'Supplier updated successfully!');
+    }
+
 }
