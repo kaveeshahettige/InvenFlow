@@ -25,7 +25,7 @@
             </div>
 
             <div >
-                <dt class="text-xl py-1 font-medium text-gray-700">Items available</dt>
+                <dt class="text-xl py-1 font-medium text-gray-700">  Number of item varieties</dt>
                 <dd class="text-lg text-gray-600">{{$category->inventories_count}}</dd>
             </div>
 

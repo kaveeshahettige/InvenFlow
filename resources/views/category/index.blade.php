@@ -42,7 +42,7 @@
                             <th
                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">
                                 <a href="">
-                                    Number of items
+                                    Number of item varieties
                                     {{-- @if (request('sort') === 'quantity')
                                         <i class="fas fa-sort-{{ request('order') === 'asc' ? 'up' : 'down' }}"></i>
                                     @endif --}}

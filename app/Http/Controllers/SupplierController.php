@@ -43,4 +43,12 @@ class SupplierController extends Controller
         return redirect()->route('suppliers.index')->with('success', 'Supplier added successfully!');
     }
 
+    //show supplier
+    public function show($id){
+        //need supplier with count in inventory table for the id
+        $supplier=Supplier::withCount('inventories')->find($id);
+
+        return view('supplier.show',compact('supplier'));
+    }
+
 }

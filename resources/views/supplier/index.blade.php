@@ -39,7 +39,7 @@
                             </th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">
                                 {{-- <a href="{{ route('inventory', ['sort' => 'price', 'order' => request('order') === 'asc' ? 'desc' : 'asc']) }}"> --}}
-                                    Number of item types supplied
+                                    Number of item varieties supplied
                                     
                                 </a>
                             </th>
@@ -66,7 +66,7 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-b border-gray-200">
                                     <div class="flex space-x-4">
-                                        <a href=""
+                                        <a href="{{route('suppliers.show', $supplier->id)}}"
                                             class="text-gray-500 hover:text-gray-700 text-lg" title="view">
                                             <i class="far fa-eye"></i>
                                         </a>
