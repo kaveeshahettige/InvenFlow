@@ -40,9 +40,9 @@
                   <div class="hidden sm:ml-6 sm:block">
                     <div class="flex space-x-4">
                       @auth
-                      <a href="{{route('items.index')}}" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Home</a>
-                      <a href="{{route('categories.index')}}" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">Categories</a>
-                <a href="{{route('suppliers.index')}}" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">Suppliers</a>
+                      <a href="{{route('items.index')}}" class="block rounded-md px-3 py-2 text-base font-medium text-white {{ Route::is('items.index') ? 'bg-indigo-700' : 'bg-gray-900' }}" aria-current="page">Home</a>
+                      <a href="{{route('categories.index')}}" class="block rounded-md px-3 py-2 text-base font-medium text-white {{ Route::is('categories.index') ? 'bg-indigo-700' : 'bg-gray-900' }}" aria-current="page">Categories</a>
+                      <a href="{{route('suppliers.index')}}" class="block rounded-md px-3 py-2 text-base font-medium text-white {{ Route::is('suppliers.index') ? 'bg-indigo-700' : 'bg-gray-900' }}" aria-current="page">Suppliers</a>
                       @endauth
                       @guest
                       <a href="{{route('home')}}" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Home</a>
