@@ -70,4 +70,11 @@ class SupplierController extends Controller
         return redirect()->route('suppliers.index')->with('success', 'Supplier updated successfully!');
     }
 
+    //delete supplier
+    public function destroy($id){
+        Supplier::destroy($id);
+        return redirect()->route('suppliers.index')->with('danger1', 'Supplier deleted successfully!');
+        
+    }
+
 }

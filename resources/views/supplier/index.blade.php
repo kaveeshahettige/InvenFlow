@@ -89,7 +89,7 @@
                                                     <div class="mt-4 flex justify-end space-x-4">
                                                         <button @click="showModal = false"
                                                             class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300">Cancel</button>
-                                                        <form action=""
+                                                        <form action="{{route('suppliers.destroy', $supplier->id)}}"
                                                             method="POST">
                                                             @csrf
                                                             @method('DELETE')
